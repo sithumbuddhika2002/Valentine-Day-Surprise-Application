@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Lock</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .header {
+            font-size: 40px;
+            font-weight: bold;
+            color: #ff4d6d;
+            text-shadow: 0 0 15px #ff9aa2, 0 0 30px #ff4d6d;
+            animation: glow 2s infinite alternate;
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px #ff9aa2; }
+            100% { text-shadow: 0 0 30px #ff4d6d; }
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fde4ec;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            width: 70%;
+            max-width: 900px;
+            flex-wrap: wrap;
+        }
+        .photo-box {
+            width: 280px;
+            height: 350px;
+            background: url('C:/Users/sithu/OneDrive/Desktop/Images/sithu.jpg') no-repeat center/cover;
+            border-radius: 15px;
+            margin-right: 40px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        .lock {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+        }
+        .code-input {
+            margin-bottom: 25px;
+            font-size: 24px;
+            background: #ff4d6d;
+            color: white;
+            padding: 15px;
+            width: 100%;
+            text-align: center;
+            border-radius: 10px;
+            font-weight: bold;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+        }
+        .digits {
+            display: grid;
+            grid-template-columns: repeat(3, 80px);
+            gap: 15px;
+            justify-content: center;
+            grid-template-areas:
+                "one two three"
+                "four five six"
+                "seven eight nine"
+                "star zero hash";
+        }
+        .digit {
+            width: 80px;
+            height: 80px;
+            background: #ff4d6d;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 32px;
+            border-radius: 50%;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .digit:hover {
+            background-color: #ff99aa;
+            transform: scale(1.1);
+        }
+        .digit:active {
+            transform: scale(0.95);
+        }
+        .navigation-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #ff4d6d;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .dot:hover {
+            transform: scale(1.2);
+            background: #ff99aa;
+        }
+        .heart-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .heart-animation span {
+            position: absolute;
+            bottom: -10px;
+            width: 15px;
+            height: 15px;
+            background: pink;
+            opacity: 0.7;
+            animation: float-hearts 6s infinite linear;
+            border-radius: 50%;
+        }
+        @keyframes float-hearts {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(2); opacity: 0; }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+                width: 90%;
+            }
+            .photo-box {
+                width: 220px;
+                height: 300px;
+            }
+            .lock {
+                width: 100%;
+                padding: 20px;
+            }
+            .code-input {
+                font-size: 22px;
+                padding: 12px;
+            }
+            .digits {
+                grid-template-columns: repeat(3, 70px);
+                gap: 12px;
+            }
+            .digit {
+                width: 70px;
+                height: 70px;
+                font-size: 28px;
+            }
+            .header {
+                font-size: 30px;
+                top: 20px; /* Make the header closer to the top */
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                font-size: 24px; /* Reduce font size further for very small screens */
+                top: 15px; /* Closer to the top for small screens */
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .photo-box {
+                width: 180px;
+                height: 240px;
+            }
+            .lock {
+                width: 100%;
+                padding: 15px;
+            }
+            .code-input {
+                font-size: 20px;
+                padding: 10px;
+            }
+            .digit {
+                width: 60px;
+                height: 60px;
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Happy Valentine's Day</div>
+    <div class="heart-animation"></div>
+    <div class="container">
+        <div class="photo-box"></div>
+        <div class="lock">
+            <div class="code-input" id="codeDisplay">🔒 Enter your password</div>
+            <div class="digits">
+                <script>
+                    let code = "";
+                    let correctCode = "1234";
+                    function pressDigit(num) {
+                        if (code.length < 4) {
+                            code += num;
+                            document.getElementById('codeDisplay').textContent = code.padEnd(4, '_');
+                        }
+                        if (code.length === 4) {
+                            setTimeout(() => {
+                                if (code === correctCode) {
+                                    window.location.href = "success.html";
+                                } else {
+                                    alert("Wrong code! Try again.");
+                                    code = "";
+                                    document.getElementById('codeDisplay').textContent = "🔒 Enter your password";
+                                }
+                            }, 500);
+                        }
+                    }
+                </script>
+                <script>
+                    // Arrange digits with * and # at the bottom row
+                    document.write(`<div class='digit' id="one" onclick='pressDigit(1)'>1</div>`);
+                    document.write(`<div class='digit' id="two" onclick='pressDigit(2)'>2</div>`);
+                    document.write(`<div class='digit' id="three" onclick='pressDigit(3)'>3</div>`);
+                    document.write(`<div class='digit' id="four" onclick='pressDigit(4)'>4</div>`);
+                    document.write(`<div class='digit' id="five" onclick='pressDigit(5)'>5</div>`);
+                    document.write(`<div class='digit' id="six" onclick='pressDigit(6)'>6</div>`);
+                    document.write(`<div class='digit' id="seven" onclick='pressDigit(7)'>7</div>`);
+                    document.write(`<div class='digit' id="eight" onclick='pressDigit(8)'>8</div>`);
+                    document.write(`<div class='digit' id="nine" onclick='pressDigit(9)'>9</div>`);
+                    document.write(`<div class='digit' id="star" onclick='pressDigit("*")'>*</div>`);
+                    document.write(`<div class='digit' id="zero" onclick='pressDigit(0)'>0</div>`);
+                    document.write(`<div class='digit' id="hash" onclick='pressDigit("#")'>#</div>`);
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="navigation-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    <script>
+        // Generate floating hearts
+        const heartContainer = document.querySelector(".heart-animation");
+        for (let i = 0; i < 30; i++) {
+            let heart = document.createElement("span");
+            heart.style.left = Math.random() * 100 + "%";
+            heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+            heartContainer.appendChild(heart);
+        }
+    </script>
+</body>
+</html>

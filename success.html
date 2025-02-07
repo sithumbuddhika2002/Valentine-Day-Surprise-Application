@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Lock</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            transition: opacity 0.8s ease-in-out;
+        }
+        .fade-out {
+            opacity: 0;
+        }
+        .header {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ff4d6d;
+            text-shadow: 0 0 10px #ff9aa2;
+            animation: glow 2s infinite alternate;
+            margin-bottom: 20px;
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px #ff9aa2; }
+            100% { text-shadow: 0 0 20px #ff4d6d; }
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fde4ec;
+            padding: 20px;
+            border-radius: 20px;
+            border: 5px solid pink;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .question-bar {
+            background: #ff99aa;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .timer {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff4d6d;
+        }
+        .timer span {
+            font-size: 30px;
+            color: #ff3366;
+        }
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid pink;
+            background: url('C:/Users/sithu/OneDrive/Desktop/Images/sithu.jpg') no-repeat center/cover;
+            margin-bottom: 10px;
+        }
+        .button {
+            background: #ff4d6d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .button:hover {
+            transform: scale(1.1);
+        }
+        .hearts {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .heart {
+            color: red;
+            font-size: 24px;
+            margin: 0 5px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header {
+                font-size: 28px;
+            }
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+            .question-bar {
+                font-size: 16px;
+            }
+            .timer {
+                font-size: 20px;
+            }
+            .profile-pic {
+                width: 70px;
+                height: 70px;
+            }
+            .button {
+                font-size: 16px;
+                padding: 8px 15px;
+            }
+            .hearts {
+                margin-top: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                font-size: 24px;
+            }
+            .container {
+                width: 95%;
+                padding: 12px;
+            }
+            .question-bar {
+                font-size: 14px;
+            }
+            .timer {
+                font-size: 18px;
+            }
+            .profile-pic {
+                width: 60px;
+                height: 60px;
+            }
+            .button {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+            .hearts {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Happy Valentine's Day</div>
+    <div class="container">
+        <div class="profile-pic"></div>
+        <div class="question-bar">How long have we been together? ❤️</div>
+        <div class="timer">
+            <span id="days">0</span> Days : 
+            <span id="hours">0</span> Hrs : 
+            <span id="minutes">0</span> Mins : 
+            <span id="seconds">0</span> Secs
+        </div>
+        <button class="button" onclick="goToNextPage()">💖 Yen & Game</button>
+        <div class="hearts">
+            <span class="heart">❤️</span>
+            <span class="heart">❤️</span>
+            <span class="heart">❤️</span>
+            <span class="heart">❤️</span>
+        </div>
+    </div>
+    <script>
+        function countdown() {
+            const startDate = new Date("2023-05-01"); // Change this date to your start date
+            const now = new Date();
+            const diff = now - startDate;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+            
+            document.getElementById("days").textContent = days;
+            document.getElementById("hours").textContent = hours;
+            document.getElementById("minutes").textContent = minutes;
+            document.getElementById("seconds").textContent = seconds;
+        }
+        setInterval(countdown, 1000);
+
+        function goToNextPage() {
+            document.body.classList.add("fade-out");
+            setTimeout(() => {
+                window.location.href = "next.html";
+            }, 800); // Wait for fade-out animation before navigating
+        }
+    </script>
+</body>
+</html>

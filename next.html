@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Journey ❤️</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ffeff6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Styled Container */
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            width: 500px;
+            animation: scaleUp 0.5s ease-in-out;
+            z-index: 2;
+        }
+
+        @keyframes scaleUp {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .message {
+            font-size: 26px;
+            font-weight: bold;
+            color: #ff4d6d;
+            margin-bottom: 20px;
+        }
+
+        /* Modern Image Grid */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .photo-grid img {
+            width: 140px;
+            height: 140px;
+            border-radius: 20px;
+            object-fit: cover;
+            transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        /* Zoom Effect on Hover */
+        .photo-grid img:hover {
+            transform: scale(1.3);
+            z-index: 10;
+            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.4);
+        }
+
+        /* Button Styling */
+        .button {
+            background: #ff4d6d;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        /* Background Floating Hearts */
+        .heart-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        @keyframes floatingHearts {
+            0% { transform: translateY(100vh) scale(0.6); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            opacity: 0.7;
+            animation: floatingHearts 6s infinite linear;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 25px;
+            }
+
+            .message {
+                font-size: 22px;
+            }
+
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .photo-grid img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .button {
+                font-size: 16px;
+                padding: 10px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .message {
+                font-size: 18px;
+            }
+
+            .photo-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .photo-grid img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .button {
+                font-size: 14px;
+                padding: 8px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Hearts Background -->
+    <div class="heart-container" id="heartContainer"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="message">Our journey together is just getting started! ❤️</div>
+        
+        <div class="photo-grid">
+            <img src="C:\Users\sithu\Downloads\download.jpg" alt="Photo 1">
+            <img src="C:\Users\sithu\Downloads\1.jpg" alt="Photo 2">
+            <img src="C:\Users\sithu\Downloads\2.jpg" alt="Photo 3">
+            <img src="C:\Users\sithu\Downloads\3.jpg" alt="Photo 4">
+            <img src="C:\Users\sithu\Downloads\4.jpg" alt="Photo 5">
+            <img src="C:\Users\sithu\Downloads\5.jpg" alt="Photo 6">
+        </div>
+
+        <button class="button" onclick="goToLast()">Surprise For You</button>
+    </div>
+
+    <script>
+        function goToLast() {
+            window.location.href = "last.html"; // Navigates to last.html
+        }
+
+        // Generate Floating Hearts in the Background
+        function createHearts() {
+            const heartContainer = document.getElementById("heartContainer");
+            for (let i = 0; i < 10; i++) {
+                let heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerHTML = "❤️";
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.animationDuration = `${3 + Math.random() * 3}s`;
+                heart.style.fontSize = `${20 + Math.random() * 15}px`;
+                heartContainer.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 6000);
+            }
+        }
+        setInterval(createHearts, 1200);
+    </script>
+
+</body>
+</html>
