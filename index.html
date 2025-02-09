@@ -48,11 +48,11 @@
             flex-direction: row; /* Keep items side by side */
         }
         .photo-box {
-            width: 280px;
-            height: 350px;
-            background: url('C:/Users/sithu/OneDrive/Desktop/Images/sithu.jpg') no-repeat center/cover;
+            width: 180px;
+            height: 240px;
+            background: url('public/images/sithu.jpg') no-repeat center/cover;
             border-radius: 15px;
-            margin-right: 40px;
+            margin-right: 20px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
         .lock {
@@ -155,14 +155,14 @@
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .container {
-                flex-direction: row; /* Align items horizontally even on mobile */
+                flex-direction: row; /* Align items horizontally */
                 padding: 20px;
                 width: 90%;
             }
             .photo-box {
-                width: 180px;
-                height: 240px;
-                margin-right: 20px;
+                width: 120px; /* Smaller image */
+                height: 160px;
+                margin-right: 15px;
             }
             .lock {
                 width: 100%;
@@ -184,8 +184,8 @@
                 transform: translateX(-50%);
             }
             .photo-box {
-                width: 150px;
-                height: 200px;
+                width: 120px; /* Even smaller image */
+                height: 160px;
             }
             .lock {
                 width: 100%;
