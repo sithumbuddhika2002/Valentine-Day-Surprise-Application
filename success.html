@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine's Lock</title>
     <style>
+        /* General Styles */
         body {
             margin: 0;
             padding: 0;
@@ -18,10 +19,14 @@
             overflow: hidden;
             text-align: center;
             transition: opacity 0.8s ease-in-out;
+            padding: 0 5%;
+            box-sizing: border-box;
         }
         .fade-out {
             opacity: 0;
         }
+
+        /* Header */
         .header {
             font-size: 32px;
             font-weight: bold;
@@ -34,6 +39,8 @@
             0% { text-shadow: 0 0 10px #ff9aa2; }
             100% { text-shadow: 0 0 20px #ff4d6d; }
         }
+
+        /* Container */
         .container {
             display: flex;
             flex-direction: column;
@@ -44,7 +51,11 @@
             border: 5px solid pink;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             position: relative;
+            width: 100%;
+            max-width: 600px;
         }
+
+        /* Question Bar */
         .question-bar {
             background: #ff99aa;
             padding: 10px 20px;
@@ -54,6 +65,8 @@
             font-weight: bold;
             margin-bottom: 20px;
         }
+
+        /* Timer */
         .timer {
             font-size: 24px;
             font-weight: bold;
@@ -63,6 +76,8 @@
             font-size: 30px;
             color: #ff3366;
         }
+
+        /* Profile Picture */
         .profile-pic {
             width: 80px;
             height: 80px;
@@ -71,6 +86,8 @@
             background: url('sithu.jpg') no-repeat center/cover;
             margin-bottom: 10px;
         }
+
+        /* Button */
         .button {
             background: #ff4d6d;
             color: white;
@@ -85,6 +102,8 @@
         .button:hover {
             transform: scale(1.1);
         }
+
+        /* Hearts */
         .hearts {
             display: flex;
             justify-content: center;
@@ -94,6 +113,90 @@
             color: red;
             font-size: 24px;
             margin: 0 5px;
+        }
+
+        /* Background Animation */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff9aa2, #ff4d6d, #ff3366);
+            opacity: 0.1;
+            z-index: -1;
+            animation: bgAnimation 10s infinite alternate;
+        }
+        @keyframes bgAnimation {
+            0% {
+                transform: scale(1);
+                opacity: 0.1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.2;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.1;
+            }
+        }
+
+        /* Floating Hearts Animation */
+        .hearts-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .hearts-background .heart {
+            position: absolute;
+            color: #ff4d6d;
+            font-size: 20px;
+            animation: float 6s infinite ease-in-out;
+        }
+        .hearts-background .heart:nth-child(1) {
+            top: -10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        .hearts-background .heart:nth-child(2) {
+            top: -20%;
+            left: 25%;
+            animation-delay: 2s;
+        }
+        .hearts-background .heart:nth-child(3) {
+            top: -10%;
+            left: 50%;
+            animation-delay: 4s;
+        }
+        .hearts-background .heart:nth-child(4) {
+            top: -20%;
+            left: 75%;
+            animation-delay: 6s;
+        }
+        .hearts-background .heart:nth-child(5) {
+            top: -10%;
+            left: 90%;
+            animation-delay: 8s;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0) rotate(720deg);
+                opacity: 0.5;
+            }
         }
 
         /* Mobile Responsiveness */
@@ -153,6 +256,16 @@
     </style>
 </head>
 <body>
+    <!-- Background Hearts -->
+    <div class="hearts-background">
+        <span class="heart">❤️</span>
+        <span class="heart">❤️</span>
+        <span class="heart">❤️</span>
+        <span class="heart">❤️</span>
+        <span class="heart">❤️</span>
+    </div>
+
+    <!-- Main Content -->
     <div class="header">Happy Valentine's Day</div>
     <div class="container">
         <div class="profile-pic"></div>
@@ -171,9 +284,11 @@
             <span class="heart">❤️</span>
         </div>
     </div>
+
     <script>
+        // Countdown Timer
         function countdown() {
-            const startDate = new Date("2023-05-01"); // Change this date to your start date
+            const startDate = new Date("2020-08-06"); // Change this date to your start date
             const now = new Date();
             const diff = now - startDate;
             
@@ -189,6 +304,7 @@
         }
         setInterval(countdown, 1000);
 
+        // Fade Out and Redirect
         function goToNextPage() {
             document.body.classList.add("fade-out");
             setTimeout(() => {

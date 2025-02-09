@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Valentine's Day 💖</title>
 
-    <!-- Import Google Font for Sinhala -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala&display=swap" rel="stylesheet">
-
     <style>
+        /* Use @font-face to load the Super Unicorn font */
+        @font-face {
+            font-family: 'Super Unicorn';
+            src: url('super-unicorn-font.ttf') format('truetype');
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -18,10 +21,11 @@
             align-items: center;
             height: 100vh;
             text-align: center;
-            font-family: 'Noto Sans Sinhala', sans-serif;
+            font-family: 'Super Unicorn', sans-serif; /* Use Super Unicorn font */
             position: relative;
             overflow: hidden;
             animation: fadeIn 2s ease-in-out;
+            padding: 0 3%; /* Adds space on both sides */
         }
 
         @keyframes fadeIn {
@@ -35,7 +39,7 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(255, 0, 85, 0.2);
             max-width: 600px;
-            width: 90%;
+            width: 100%; /* Ensure container fills the available width within the set limits */
             position: relative;
             z-index: 2;
             text-align: center;
