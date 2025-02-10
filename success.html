@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine's Lock</title>
     <style>
+
+        @font-face {
+            font-family: 'Darling Girl';
+            src: url('DarlingGirl.ttf') format('truetype');
+        }
+        
         /* General Styles */
         body {
             margin: 0;
@@ -21,6 +27,7 @@
             transition: opacity 0.8s ease-in-out;
             padding: 0 5%;
             box-sizing: border-box;
+            
         }
         .fade-out {
             opacity: 0;
@@ -34,6 +41,8 @@
             text-shadow: 0 0 10px #ff9aa2;
             animation: glow 2s infinite alternate;
             margin-bottom: 20px;
+            font-family: 'Darling Girl', sans-serif; /* Use Super Unicorn font */
+
         }
         @keyframes glow {
             0% { text-shadow: 0 0 10px #ff9aa2; }
@@ -64,6 +73,7 @@
             color: white;
             font-weight: bold;
             margin-bottom: 20px;
+            
         }
 
         /* Timer */
@@ -266,7 +276,7 @@
     </div>
 
     <!-- Main Content -->
-    <div class="header">Happy Valentine's Day</div>
+    <div class="header">Happy Valentines Day My Love</div>
     <div class="container">
         <div class="profile-pic"></div>
         <div class="question-bar">How long have we been together? ❤️</div>
