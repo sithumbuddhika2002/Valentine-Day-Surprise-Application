@@ -34,10 +34,9 @@
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+    background: rgba(255, 255, 255, 0.18); /* Slightly more opaque for better visibility */
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(255, 0, 85, 0.2);
     max-width: 600px;
     width: 100%;
     position: relative;
@@ -45,10 +44,14 @@
     text-align: center;
     font-size: 18px;
     line-height: 1.6;
-    backdrop-filter: blur(10px); /* Glass effect */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Soft border */
+    backdrop-filter: blur(14px) brightness(1.05); /* Subtle brightness increase */
+    -webkit-backdrop-filter: blur(14px) brightness(1.05);
+    border: 1px solid rgba(255, 255, 255, 0.25); /* Slightly more defined border */
+    box-shadow: 0 4px 18px rgba(255, 255, 255, 0.2); /* Light glow for depth */
 }
+
+
+
 
 
         /* Modern Text Effects */
