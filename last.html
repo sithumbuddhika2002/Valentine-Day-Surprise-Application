@@ -34,26 +34,23 @@
         }
 
         .container {
-    background: rgba(255, 255, 255, 0.25); /* More opacity for brightness */
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(255, 0, 85, 0.2);
-    max-width: 600px;
-    width: 100%;
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    font-size: 18px;
-    line-height: 1.6;
-    backdrop-filter: blur(15px) brightness(1.2); /* Stronger blur & brightness */
-    -webkit-backdrop-filter: blur(15px) brightness(1.2); /* Safari support */
-    border: 1px solid rgba(255, 255, 255, 0.4); /* More visible border */
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3); /* Extra glow effect */
-}
+            background: rgba(255, 255, 255, 0.25); /* More opacity for brightness */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 0, 85, 0.2);
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+            backdrop-filter: blur(15px) brightness(1.2); /* Stronger blur & brightness */
+            -webkit-backdrop-filter: blur(15px) brightness(1.2); /* Safari support */
+            border: 1px solid rgba(255, 255, 255, 0.4); /* More visible border */
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3); /* Extra glow effect */
+        }
 
-
-
-        /* Modern Text Effects */
         .message {
             font-size: 24px;
             color: #ff4d6d;
@@ -79,7 +76,6 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* Heart Floating Animation */
         .heart-effect {
             position: absolute;
             top: 10%;
@@ -95,7 +91,6 @@
             50% { transform: translateY(-20px); }
         }
 
-        /* Floating Hearts Background */
         .floating-hearts {
             position: absolute;
             width: 100%;
@@ -151,6 +146,22 @@
             }
         }
 
+        /* WhatsApp Button */
+        .whatsapp-button {
+            background-color: #25d366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            display: inline-block;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128c7e;
+        }
     </style>
 </head>
 <body>
@@ -159,12 +170,15 @@
     <div class="floating-hearts" id="heartContainer"></div>
 
     <div class="container">
-        <!-- Heart Effect at the Top -->
-
         <!-- Message with Modern Animations -->
         <div class="message">
             From the moment I met you, my world changed. Your love fills my heart with warmth, joy, and endless happiness. Every smile, every touch, every moment we share is a beautiful reminder of how lucky I am to have you. You are my greatest adventure, my heart’s deepest desire, and my forever love. No matter where life takes us, I promise to stand by your side, to love you endlessly, and to cherish every second together. Happy Valentine’s Day, my love—my heart is yours, now and forever.
         </div>
+
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/+94764537993?text=Thank%20you%20Babe%20🥺" class="whatsapp-button" target="_blank">
+            Send "Thank you" on WhatsApp
+        </a>
     </div>
 
     <script>
