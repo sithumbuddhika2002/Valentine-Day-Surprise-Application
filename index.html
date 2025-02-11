@@ -30,18 +30,18 @@
         }
 
         .header {
-            font-size: calc(2.5vw + 0.8rem); /* Reduced size */
-            font-weight: bold;
-            color: #ff4d6d;
-            text-shadow: 0 0 15px #ff9aa2, 0 0 30px #ff4d6d;
-            animation: glow 2s infinite alternate;
-            position: absolute;
-            top: 5%; /* Positioned above the lock container */
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Darling Girl', cursive;
-            letter-spacing: 2px;
-        }
+    font-size: calc(2.5vw + 1rem); /* Adjusted scaling for better mobile display */
+    font-weight: bold;
+    color: #ff4d6d;
+    text-shadow: 0 0 15px #ff9aa2, 0 0 30px #ff4d6d;
+    animation: glow 2s infinite alternate;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Darling Girl', cursive;
+    letter-spacing: 2px;
+}
 
         @keyframes glow {
             0% { text-shadow: 0 0 10px #ff9aa2; }
@@ -204,7 +204,7 @@
             }
 
             .header {
-                font-size: calc(1vw + 1rem); /* Smaller mobile font size */
+                font-size: calc(3vw + 1rem); /* Smaller mobile font size */
                 top: 5%;
             }
 
@@ -227,12 +227,12 @@
 
         @media (max-width: 480px) {
             .header {
-                font-size: calc(1vw + 1rem); /* Even smaller for very small screens */
+                font-size: calc(0.5vw + 1rem);/* Even smaller for very small screens */
             }
 
             .photo-box {
                 width: 160px;
-                height: 200px;
+                height: 180px;
             }
 
             .lock {
