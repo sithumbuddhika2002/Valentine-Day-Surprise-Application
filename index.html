@@ -30,13 +30,13 @@
         }
 
         .header {
-            font-size: calc(2.5vw + 0.8rem);
+            font-size: calc(2.5vw + 0.8rem); /* Reduced size */
             font-weight: bold;
             color: #ff4d6d;
             text-shadow: 0 0 15px #ff9aa2, 0 0 30px #ff4d6d;
             animation: glow 2s infinite alternate;
             position: absolute;
-            top: 5%;
+            top: 5%; /* Positioned above the lock container */
             left: 50%;
             transform: translateX(-50%);
             font-family: 'Darling Girl', cursive;
@@ -50,26 +50,32 @@
 
         .container {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
             background: #fde4ec;
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            width: 80%;
+            max-width: 1000px;
             padding: 40px;
-            width: 90%;
-            max-width: 400px;
-            transition: transform 0.3s ease;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        .container.wrong {
-            animation: shake 0.4s ease-in-out;
+        .photo-box {
+            width: 100%;
+            max-width: 250px;
+            height: 300px;
+            background: url('./sithu.jpg') no-repeat center/cover;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            animation: bounce 2s infinite alternate;
         }
 
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            50% { transform: translateX(10px); }
-            75% { transform: translateX(-10px); }
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
         }
 
         .lock {
@@ -77,17 +83,20 @@
             padding: 30px 50px;
             border-radius: 20px;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
             width: 100%;
+            max-width: 380px;
             text-align: center;
-            animation: fadeIn 0.8s ease-in-out;
+            animation: slideIn 0.8s ease-in-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes slideIn {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
         }
 
         .code-input {
+            margin-bottom: 30px;
             font-size: 24px;
             background: #ff4d6d;
             color: white;
@@ -100,12 +109,21 @@
             transition: transform 0.3s ease-in-out;
         }
 
+        .code-input:focus {
+            transform: scale(1.05);
+            outline: none;
+        }
+
         .digits {
             display: grid;
             grid-template-columns: repeat(3, 80px);
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
-            margin-top: 20px;
+            grid-template-areas:
+                "one two three"
+                "four five six"
+                "seven eight nine"
+                "star zero hash";
         }
 
         .digit {
@@ -124,33 +142,133 @@
             transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
-        .digit:active {
-            transform: scale(0.9);
+        .digit:hover {
+            background-color: #ff99aa;
+            transform: scale(1.1);
         }
 
-        @keyframes fadeOut {
-            to { opacity: 0; transform: scale(0.9); }
+        .digit:active {
+            transform: scale(0.95);
+        }
+
+        .heart-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .heart-animation span {
+            position: absolute;
+            bottom: -15px;
+            width: 20px;
+            height: 20px;
+            background: pink;
+            opacity: 0.7;
+            animation: float-hearts 6s infinite linear;
+            border-radius: 50%;
+        }
+
+        @keyframes float-hearts {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(2); opacity: 0; }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+                width: 90%;
+                gap: 20px;
+            }
+
+            .photo-box {
+                width: 200px;
+                height: 250px;
+                margin-bottom: 20px;
+            }
+
+            .lock {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .header {
+                font-size: calc(1vw + 1rem); /* Smaller mobile font size */
+                top: 5%;
+            }
+
+            .code-input {
+                font-size: 20px;
+                padding: 15px;
+            }
+
+            .digits {
+                grid-template-columns: repeat(3, 70px);
+                gap: 10px;
+            }
+
+            .digit {
+                width: 70px;
+                height: 70px;
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                font-size: calc(1vw + 1rem); /* Even smaller for very small screens */
+            }
+
+            .photo-box {
+                width: 160px;
+                height: 200px;
+            }
+
+            .lock {
+                padding: 15px;
+            }
+
+            .code-input {
+                font-size: 18px;
+                padding: 12px;
+            }
+
+            .digits {
+                grid-template-columns: repeat(3, 60px);
+                gap: 8px;
+            }
+
+            .digit {
+                width: 60px;
+                height: 60px;
+                font-size: 26px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">Happy Valentine's Day</div>
-    <div class="container" id="container">
+    <div class="header">Happy Valentines Day</div>
+    <div class="heart-animation"></div>
+    <div class="container">
+        <div class="photo-box"></div>
         <div class="lock">
             <div class="code-input" id="codeDisplay">🔒 Enter your password</div>
             <div class="digits">
-                <div class='digit' onclick='pressDigit(1)'>1</div>
-                <div class='digit' onclick='pressDigit(2)'>2</div>
-                <div class='digit' onclick='pressDigit(3)'>3</div>
-                <div class='digit' onclick='pressDigit(4)'>4</div>
-                <div class='digit' onclick='pressDigit(5)'>5</div>
-                <div class='digit' onclick='pressDigit(6)'>6</div>
-                <div class='digit' onclick='pressDigit(7)'>7</div>
-                <div class='digit' onclick='pressDigit(8)'>8</div>
-                <div class='digit' onclick='pressDigit(9)'>9</div>
-                <div class='digit' onclick='clearCode()'>C</div>
-                <div class='digit' onclick='pressDigit(0)'>0</div>
-                <div class='digit' onclick='pressDigit("*")'>*</div>
+                <div class='digit' id="one" onclick='pressDigit(1)'>1</div>
+                <div class='digit' id="two" onclick='pressDigit(2)'>2</div>
+                <div class='digit' id="three" onclick='pressDigit(3)'>3</div>
+                <div class='digit' id="four" onclick='pressDigit(4)'>4</div>
+                <div class='digit' id="five" onclick='pressDigit(5)'>5</div>
+                <div class='digit' id="six" onclick='pressDigit(6)'>6</div>
+                <div class='digit' id="seven" onclick='pressDigit(7)'>7</div>
+                <div class='digit' id="eight" onclick='pressDigit(8)'>8</div>
+                <div class='digit' id="nine" onclick='pressDigit(9)'>9</div>
+                <div class='digit' id="star" onclick='pressDigit("*")'>*</div>
+                <div class='digit' id="zero" onclick='pressDigit(0)'>0</div>
+                <div class='digit' id="clear" onclick='clearCode()'>C</div>
             </div>
         </div>
     </div>
@@ -166,20 +284,28 @@
             if (code.length === 4) {
                 setTimeout(() => {
                     if (code === correctCode) {
-                        document.getElementById('container').style.animation = "fadeOut 0.5s forwards";
-                        setTimeout(() => window.location.href = "success.html", 500);
+                        window.location.href = "success.html";
                     } else {
-                        document.getElementById('container').classList.add('wrong');
-                        setTimeout(() => document.getElementById('container').classList.remove('wrong'), 500);
+                        alert("Wrong code! Try again.");
                         code = "";
                         document.getElementById('codeDisplay').textContent = "🔒 Enter your password";
                     }
                 }, 500);
             }
         }
+
         function clearCode() {
             code = "";
             document.getElementById('codeDisplay').textContent = "🔒 Enter your password";
+        }
+
+        // Generate floating hearts
+        const heartContainer = document.querySelector(".heart-animation");
+        for (let i = 0; i < 30; i++) {
+            let heart = document.createElement("span");
+            heart.style.left = Math.random() * 100 + "%";
+            heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+            heartContainer.appendChild(heart);
         }
     </script>
 </body>
