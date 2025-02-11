@@ -54,16 +54,18 @@
         /* Modern Image Grid */
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, 1fr); /* Three columns */
+            grid-template-rows: repeat(2, 1fr); /* Two rows */
             gap: 15px;
             justify-content: center;
+            grid-auto-rows: minmax(100px, auto); /* Ensures the rows adjust based on content */
         }
 
         .photo-grid img {
-            width: 140px;
-            height: 140px;
+            width: 100%; /* Makes the images take up the available space */
+            height: 200px; /* Fixed height for landscape images */
+            object-fit: cover; /* Ensures images maintain the landscape aspect ratio */
             border-radius: 20px;
-            object-fit: cover;
             transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
             cursor: pointer;
         }
@@ -220,12 +222,12 @@
         <div class="message">Our journey together is just getting started! ❤️</div>
         
         <div class="photo-grid">
-            <img src="6.jpg" alt="Photo 1">
-            <img src="1.jpg" alt="Photo 2">
-            <img src="2.jpg" alt="Photo 3">
-            <img src="3.jpg" alt="Photo 4">
-            <img src="4.jpg" alt="Photo 5">
-            <img src="5.jpg" alt="Photo 6">
+            <img src="1.jpg" alt="Photo 1">
+            <img src="2.jpg" alt="Photo 2">
+            <img src="3.jpg" alt="Photo 3">
+            <img src="4.jpg" alt="Photo 4">
+            <img src="5.jpg" alt="Photo 5">
+            <img src="6.jpg" alt="Photo 6">
         </div>
 
         <button class="button" onclick="goToLast()">Surprise For You</button>
