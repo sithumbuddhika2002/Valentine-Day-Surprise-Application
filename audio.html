@@ -1,3 +1,4 @@
+<!-- First page (audio.html) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,14 +14,14 @@
 
     <script>
         const audio = document.getElementById("backgroundMusic");
-        
+
         // Restore playback position if available
         if (sessionStorage.getItem("musicTime")) {
             audio.currentTime = sessionStorage.getItem("musicTime");
         }
 
-        // Save playback position on pause
-        audio.onpause = () => {
+        // Save playback position when the page is unloaded
+        window.onbeforeunload = () => {
             sessionStorage.setItem("musicTime", audio.currentTime);
         };
 
