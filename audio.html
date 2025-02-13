@@ -1,4 +1,3 @@
-<!-- First page (audio.html) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,15 +19,17 @@
             audio.currentTime = sessionStorage.getItem("musicTime");
         }
 
-        // Save playback position when the page is unloaded
-        window.onbeforeunload = () => {
+        // Save playback position on pause or before page unload
+        window.addEventListener("beforeunload", () => {
             sessionStorage.setItem("musicTime", audio.currentTime);
-        };
+        });
 
-        // Ensure autoplay works
-        document.addEventListener("click", function() {
+        // Ensure autoplay works when user clicks
+        document.addEventListener("click", function () {
             audio.play().catch(err => console.log("Autoplay blocked: " + err));
         });
     </script>
+        <iframe src="audio.html" style="display:none;"></iframe>
+
 </body>
 </html>
