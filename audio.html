@@ -13,23 +13,21 @@
 
     <script>
         const audio = document.getElementById("backgroundMusic");
-
+        
         // Restore playback position if available
         if (sessionStorage.getItem("musicTime")) {
             audio.currentTime = sessionStorage.getItem("musicTime");
         }
 
-        // Save playback position on pause or before page unload
-        window.addEventListener("beforeunload", () => {
+        // Save playback position on pause
+        audio.onpause = () => {
             sessionStorage.setItem("musicTime", audio.currentTime);
-        });
+        };
 
-        // Ensure autoplay works when user clicks
-        document.addEventListener("click", function () {
+        // Ensure autoplay works
+        document.addEventListener("click", function() {
             audio.play().catch(err => console.log("Autoplay blocked: " + err));
         });
     </script>
-        <iframe src="audio.html" style="display:none;"></iframe>
-
 </body>
 </html>
