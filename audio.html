@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Music</title>
+</head>
+<body>
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="music.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const audio = document.getElementById("backgroundMusic");
+        
+        // Restore playback position if available
+        if (sessionStorage.getItem("musicTime")) {
+            audio.currentTime = sessionStorage.getItem("musicTime");
+        }
+
+        // Save playback position on pause
+        audio.onpause = () => {
+            sessionStorage.setItem("musicTime", audio.currentTime);
+        };
+
+        // Ensure autoplay works
+        document.addEventListener("click", function() {
+            audio.play().catch(err => console.log("Autoplay blocked: " + err));
+        });
+    </script>
+</body>
+</html>
