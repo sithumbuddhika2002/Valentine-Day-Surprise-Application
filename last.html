@@ -162,7 +162,7 @@
             From the moment I met you, my world changed. Your love fills my heart with warmth, joy, and endless happiness. Every smile, every touch, every moment we share is a beautiful reminder of how lucky I am to have you. You are my greatest adventure, my heart’s deepest desire, and my forever love. No matter where life takes us, I promise to stand by your side, to love you endlessly, and to cherish every second together. Happy Valentine’s Day, my love—my heart is yours, now and forever.
         </div>
 
-        <a href="https://wa.me/+94713970585?text=Thank%20you%20Babe%20🥺" class="whatsapp-button" target="_blank">
+        <a href="https://wa.me/+94715955763?text=Thank%20you%20Babe%20🥺" class="whatsapp-button" target="_blank">
             Send Thank you 🥺 on WhatsApp
         </a>
 
@@ -170,6 +170,10 @@
             Download your Memory 📸
         </a>
     </div>
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="Gajindu%20Fonseka%20-%20Numbata%20Dunnu%20Aale%20%E0%B6%B1%E0%B7%94%E0%B6%B9%E0%B6%A7%20%E0%B6%AF%E0%B7%94%E0%B6%B1%E0%B7%8A%E0%B6%B1%E0%B7%94%20%E0%B6%86%E0%B6%BD%E0%B7%9A%20(Official%20Music%20Video)%20-%20Gajindu%20Fonseka%20(1).mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
     <script>
         function createHearts() {
@@ -200,6 +204,15 @@
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+        });
+    </script>
+    <script>
+        // Ensuring autoplay works on mobile browsers
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById("backgroundMusic");
+            audio.play().catch(() => {
+                console.log("Autoplay prevented. User interaction required.");
+            });
         });
     </script>
 
