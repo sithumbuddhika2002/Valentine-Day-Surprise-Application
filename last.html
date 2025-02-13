@@ -170,7 +170,10 @@
             Download your Memory 📸
         </a>
     </div>
-  
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="music.ogg" type="audio/ogg">
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
     
 
     <script>
@@ -204,7 +207,16 @@
             document.body.removeChild(link);
         });
     </script>
-    
+    <script>
+        // Ensuring autoplay works on mobile browsers
+        document.getElementById("backgroundMusic").volume = 1.0;
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById("backgroundMusic");
+            audio.play().catch(() => {
+                console.log("Autoplay prevented. User interaction required.");
+            });
+        });
+    </script>
 
 
 </body>
