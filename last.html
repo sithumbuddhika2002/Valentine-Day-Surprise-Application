@@ -171,9 +171,10 @@
         </a>
     </div>
     <audio id="backgroundMusic" autoplay loop>
-        <source src="Gajindu%20Fonseka%20-%20Numbata%20Dunnu%20Aale%20%E0%B6%B1%E0%B7%94%E0%B6%B9%E0%B6%A7%20%E0%B6%AF%E0%B7%94%E0%B6%B1%E0%B7%8A%E0%B6%B1%E0%B7%94%20%E0%B6%86%E0%B6%BD%E0%B7%9A%20(Official%20Music%20Video)%20-%20Gajindu%20Fonseka%20(1).mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
+        <source src="music.ogg" type="audio/ogg">
+        <source src="music.mp3" type="audio/mpeg">
     </audio>
+    
 
     <script>
         function createHearts() {
@@ -208,6 +209,7 @@
     </script>
     <script>
         // Ensuring autoplay works on mobile browsers
+        document.getElementById("backgroundMusic").volume = 1.0;
         document.addEventListener('DOMContentLoaded', function() {
             const audio = document.getElementById("backgroundMusic");
             audio.play().catch(() => {
